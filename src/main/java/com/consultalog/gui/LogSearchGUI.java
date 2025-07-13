@@ -2,18 +2,16 @@ package com.consultalog.gui;
 
 import com.consultalog.model.LogEntry;
 import com.consultalog.dao.LogDAO;
-// import com.consultalog.util.DatabaseConnection; // Não é mais necessário aqui diretamente
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener; // Certifique-se de ter esta importação
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.net.URL; 
-    
 
 public class LogSearchGUI extends JFrame {
 
@@ -23,7 +21,7 @@ public class LogSearchGUI extends JFrame {
     private JButton btnBuscar;
     private JTable logTable;
     private DefaultTableModel tableModel;
-    private LogDAO logDAO; // Instância do DAO
+    private LogDAO logDAO;
 
     public LogSearchGUI() {
         setTitle("Consulta de Logs - Aplicação Desktop");
@@ -31,15 +29,13 @@ public class LogSearchGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        logDAO = new LogDAO(); // Inicializa a instância do DAO aqui!
+        logDAO = new LogDAO();
 
-                try {
-            // Caminho para o ícone dentro da pasta 'resources'
-            // O caminho é relativo à raiz dos recursos ou do classpath
+        try {
             URL iconURL = getClass().getClassLoader().getResource("icon.png");
             if (iconURL != null) {
                 Image icon = Toolkit.getDefaultToolkit().getImage(iconURL);
-                this.setIconImage(icon); // Define o ícone da janela
+                this.setIconImage(icon);
             } else {
                 System.err.println("Ícone 'icon.png' não encontrado em src/main/resources.");
             }
@@ -47,11 +43,10 @@ public class LogSearchGUI extends JFrame {
             System.err.println("Erro ao carregar o ícone: " + e.getMessage());
             e.printStackTrace();
         }
-        // --- FIM DO BLOCO DO ÍCONE ---
 
         initComponents();
         setupLayout();
-        setupListeners();
+        setupListeners(); // Onde a nova lógica será adicionada
     }
 
     private void initComponents() {
@@ -114,12 +109,42 @@ public class LogSearchGUI extends JFrame {
     }
 
     private void setupListeners() {
+        // Listener para o botão Buscar
         btnBuscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarLogs();
             }
         });
+
+        // --- ADICIONE ESTES LISTENERS PARA A TECLA ENTER NOS CAMPOS DE TEXTO ---
+        // Listener para txtNumeroPedido
+        txtNumeroPedido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Quando Enter é pressionado no campo, chama a função de busca
+                buscarLogs();
+            }
+        });
+
+        // Listener para txtNotaFiscal
+        txtNotaFiscal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Quando Enter é pressionado no campo, chama a função de busca
+                buscarLogs();
+            }
+        });
+
+        // Listener para txtUsuario (opcional, se quiser que Enter aqui também dispare a busca)
+        txtUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Quando Enter é pressionado no campo, chama a função de busca
+                buscarLogs();
+            }
+        });
+        // --- FIM DA ADIÇÃO DOS LISTENERS ---
     }
 
     private void buscarLogs() {
@@ -138,7 +163,6 @@ public class LogSearchGUI extends JFrame {
         tableModel.setRowCount(0);
 
         try {
-            // --- CORREÇÃO AQUI: Chame o método da instância 'logDAO' ---
             List<LogEntry> logs = logDAO.searchLogs(numeroPedido, notaFiscal, usuario);
 
             if (logs.isEmpty()) {

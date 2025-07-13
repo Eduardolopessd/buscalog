@@ -1,7 +1,10 @@
 com\consultalog\gui\LogSearchGUI$1.class
 com\consultalog\gui\LogSearchGUI$2.class
 com\consultalog\util\DatabaseConnection.class
+com\consultalog\gui\LogSearchGUI$5.class
+com\consultalog\gui\LogSearchGUI$3.class
 com\consultalog\model\LogEntry.class
 com\consultalog\gui\LogSearchGUI.class
+com\consultalog\gui\LogSearchGUI$4.class
 com\consultalog\Main.class
 com\consultalog\dao\LogDAO.class
