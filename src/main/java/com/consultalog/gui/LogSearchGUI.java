@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.net.URL; 
+    
 
 public class LogSearchGUI extends JFrame {
 
@@ -30,6 +32,22 @@ public class LogSearchGUI extends JFrame {
         setLocationRelativeTo(null);
 
         logDAO = new LogDAO(); // Inicializa a instância do DAO aqui!
+
+                try {
+            // Caminho para o ícone dentro da pasta 'resources'
+            // O caminho é relativo à raiz dos recursos ou do classpath
+            URL iconURL = getClass().getClassLoader().getResource("icon.png");
+            if (iconURL != null) {
+                Image icon = Toolkit.getDefaultToolkit().getImage(iconURL);
+                this.setIconImage(icon); // Define o ícone da janela
+            } else {
+                System.err.println("Ícone 'icon.png' não encontrado em src/main/resources.");
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar o ícone: " + e.getMessage());
+            e.printStackTrace();
+        }
+        // --- FIM DO BLOCO DO ÍCONE ---
 
         initComponents();
         setupLayout();

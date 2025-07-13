@@ -14,7 +14,7 @@ public class DatabaseConnection {
     // Substitua 'localhost:1433' pelo endereço do seu servidor e 'SeuBancoDeDados' pelo nome do seu DB.
     // 'encrypt=false;trustServerCertificate=true;' são configurações comuns para desenvolvimento.
     // Para produção, considere configurações de segurança mais robustas (SSL/TLS).
-    private static final String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=SeuBancoDeDados;encrypt=false;trustServerCertificate=true;";
+    private static final String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=ConsultaLogsDB;encrypt=false;trustServerCertificate=true;";
     private static final String USER = "sa"; // Seu usuário do SQL Server
     private static final String PASS = "Teste123";   // Sua senha do SQL Server
 
