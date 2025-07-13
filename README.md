@@ -1,8 +1,7 @@
 # Consulta de Logs Desktop (PT-BR) / Logs Query Desktop (EN)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Eduardolopessd/consulta-logs-desktop.svg?style=social)](https://github.com/Eduardolopessd/consulta-logs-desktop/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Eduardolopessd/consulta-logs-desktop.svg?style=social)](https://github.com/Eduardolopessd/consulta-logs-desktop/network/members)
+
 
 ---
 
