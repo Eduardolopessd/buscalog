@@ -81,7 +81,7 @@ Siga os passos abaixo para configurar e executar a aplicação na sua máquina l
     ```
 2.  **Execute o JAR:**
     ```bash
-    java -jar consulta-logs-desktop-1.0.0-SNAPSHOT-jar-with-dependencies.jar
+    java -jar consulta-logs-desktop-1.1.0-jar-with-dependencies.jar
     ```
 
     A janela da aplicação desktop "Consulta de Logs" deverá aparecer.
